@@ -1,14 +1,170 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/font-awesome.css" />
+    <style>
+        .mar_t2{
+          margin-top: 2rem
+      }
+      .fnt_wgt{
+          font-weight: 500;
+      }
+      .approver{
+          width:8rem;
+          height: 3rem;
+          background: #000;
+          margin: 0 auto;
+          cursor: grab;
+      }
+      .decision{
+          width:3rem;
+          height: 3rem;
+          transform: rotate(45deg);
+          background: #000;
+          margin: 1rem auto;
+          cursor: grab;
+      }
+      .toolBox{
+          border: 1px solid #ddd;
+          padding: 1rem;
+      }
+      .toolBox  div{
+          border-bottom: 1px solid #ddd;
+          padding: 1rem;
+      }
+      #dragabbleContent{
+        border: 1px solid #ddd;
+        min-height: 50vh;
+        position: relative;
+      }
+      #dragabbleContent h3{
+        opacity: 0.3;
+        position: absolute;
+        top: 44%;
+        left: 41%;
+        right: 0;
+        bottom: 0;
+        margin: 0;
+      }
+      .flex-container{
+          display: flex;
+      }
+      .flex-container > div{
+          flex:0 0 10%;
+      }
+      .flex-container > div:last-child{
+          flex:0 0 90%;
+      }
+   </style>
 </head>
+
 <body>
-    dsf
+    <div class="container">
+        <h3>Create Workflow <span class="pull-right"><button class="btn btn-primary btn-sm">View Org Hierarchy</button></span></h3>
+
+        <div class="panel panel-default mar_t2">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label class="fnt_wgt">Select Module</label>
+                        <div>
+                            <select class="form-control">
+                                <option value="" disabled selected>Select</option>
+                                <option value="one">HRMS</option>
+                                <option value="one">HRMS</option>
+                                <option value="one">HRMS</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="fnt_wgt">Select Request type</label>
+                        <div>
+                            <select class="form-control">
+                                <option value="" disabled selected>Select</option>
+                                <option value="one">HRMS</option>
+                                <option value="one">HRMS</option>
+                                <option value="one">HRMS</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mar_t2">
+                    <div class="col-md-3">
+                        <label class="fnt_wgt">Do you want to use</label>
+                        <div>
+                            <label class="radio-inline">
+                                <input type="radio" name="workflow" id="hideWorkflow" />
+                                Existing Workflow
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="workflow" id="createWorkflow" />
+                                New Workflow
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-3 hide" id="showWorkflow">
+                        <label class="fnt_wgt">Workflow Name</label>
+                        <div>
+                            <input type="text" class="form-control" placeholder="Enter Workflow Name" />
+                        </div>
+                    </div>
+                </div>
+                <h3>Design flow</h3>
+                <div class="flex-container">
+                    <div class="text-center">
+                        <div class="toolBox">
+                            <div>
+                                <div class="approver"></div>
+                                <small>Role</small>
+                            </div>
+                            <div>
+                                <div class="decision"></div>
+                                <small>Conditional Box</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <div id="dragabbleContent">
+                            <h3>Drag & Drop Elements</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <canvas id="decision"></canvas>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script>
+        $(':radio[id=createWorkflow]').change(function () {
+            $("#showWorkflow").removeClass("hide");
+        });
+        $(':radio[id=hideWorkflow]').change(function () {
+            $("#showWorkflow").addClass("hide");
+        });
+
+        /*      let rect = document.querySelector("#approver");
+                let diamond = document.querySelector("#decision");
+                var ctx = rect.getContext("2d");
+                ctx.strokeStyle = "red";
+                ctx.fillStyle = '#000';
+                ctx.fillRect(0, 0, 150, 50);
+                ctx.stroke();
+
+
+                var ctxDecision = diamond.getContext("2d");
+                ctxDecision.strokeStyle = "red";
+                ctxDecision.fillStyle = '#000';
+                ctxDecision.fillRect(0, 0, 100, 100);
+                ctxDecision.stroke(); */
+    </script>
 </body>
+
 </html>
